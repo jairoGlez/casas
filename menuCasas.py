@@ -6,6 +6,7 @@ class Menu:
         while True:
             print("1) Mostrar Compradores")
             print("2) Agregar comprador")
+            print("3) Buscar")
             print("0) Salir")
             op = input()
 
@@ -13,6 +14,8 @@ class Menu:
                 self.mostrar()
             elif op == "2":
                 self.agregar()
+            elif op == "3":
+                self.buscar()
             elif op == "0":
                 break
 
@@ -28,3 +31,10 @@ class Menu:
         apellido2 = input("Apellido Materno: ")
         idVendedor = input("ID del vendedor :")
         self.casa.nuevoComprador([email,nombre,apellido1,apellido2,idVendedor])
+
+    def buscar(self):
+        palabra = input("Escribe el correo: ")
+        compradores = self.casa.buscar(palabra)
+
+        for e in compradores:
+            print("{0:20}{1:10}{2:15}{3:15}{4:2}".format(e["correo"],e["nombre"],e["apellido1"],e["apellido2"],e["idVendedor"]))
